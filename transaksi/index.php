@@ -13,7 +13,7 @@ if(isset($_POST['simpan'])) {
     $waktu = $_POST['date'];
     $total = $_POST['total'];
     $bayar = $_POST['bayar'];
-    $kmbl = $_POST['kembali'];
+    $kmbl = $_POST['bayar'] - $_POST['total'];
 
     $simpan = $conn->query("INSERT INTO tbl_transaksi VALUES(NULL, '$admin', '$waktu', '$total', '$bayar', '$kmbl')");
     if ($simpan) {
@@ -102,19 +102,16 @@ $view_admin = $conn->query("SELECT * FROM tbl_admin");
                                         <label class="form-label" for="">Tanggal</label>
                                         <input type="date" required name="date" class="form-control">
                                     </div>
-                                    <div class="form-grup mb-3">
+                                    
+                                </div>
+                                <div class="col-lg-6">
+                                <div class="form-grup mb-3">
                                         <label class="form-label" for="">Total</label>
                                         <input type="text" required name="total" class="form-control">
                                     </div>
-                                </div>
-                                <div class="col-lg-6">
                                     <div class="form-grup mb-3">
                                         <label class="form-label" for="">Bayar</label>
                                         <input type="text" required name="bayar" class="form-control">
-                                    </div>
-                                    <div class="form-grup mb-3">
-                                        <label class="form-label" for="">Kembali</label>
-                                        <input type="text" required name="kembali" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group text-end">
